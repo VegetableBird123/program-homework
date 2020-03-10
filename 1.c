@@ -89,7 +89,11 @@ void add()
 	}
 }
 
+<<<<<<< HEAD
 void sub()
+=======
+void min()
+>>>>>>> 947253b73d12e69e2418b9b539e1db0ef8ea8516
 {
 	int m, n, i, j;//两个矩阵的行数和列数
 	int a, b;//用于循环输入矩阵的整型数
