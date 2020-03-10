@@ -16,6 +16,7 @@ int main(void)
 	if (a == 1)
 	{
 		printf("WARN:Please confirm whether the matrices are of the same type\n");
+		printf("Otherwise, the program will be terminated.\n");
 		add();
 	}
 	else if (a == 2)
@@ -37,6 +38,8 @@ void add()
 	printf("please enter two numbers for the second matrix's row and column");
 	scanf("%d", &i);
 	scanf("%d", &j);
+	if (m != i || n != j)
+		exit(1);
 
 	num1 = m;
 	num2 = n;
@@ -77,6 +80,7 @@ void add()
 			printf("%4d", matrix_tem[num1][num2]);
 	}
 }
+
 void min()
 {
 	int m, n, i, j;//两个矩阵的行数和列数
