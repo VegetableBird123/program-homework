@@ -27,7 +27,7 @@ int main(void)
 		printf("WARN:Please confirm whether the matrices are of the same type\n");
 		sub();
 	}
-	else if(a == 5)
+	else if (a == 5)
 	{
 		printf("Please confirm whether the matrix row-column relationship is reasonable\n");
 		mul();
@@ -77,7 +77,7 @@ void add()
 	for (a = 0; a < num1; a++)
 		for (b = 0; b < num2; b++)
 		{
-			matrix_tem [num1][num2]= matrix1[num1][num2] + matrix2[num1][num2];
+			matrix_tem[num1][num2] = matrix1[num1][num2] + matrix2[num1][num2];
 		}
 	printf("The result :\n");
 	for (a = 0; a < num1; a++)
@@ -89,11 +89,7 @@ void add()
 	}
 }
 
-<<<<<<< HEAD
 void sub()
-=======
-void min()
->>>>>>> 947253b73d12e69e2418b9b539e1db0ef8ea8516
 {
 	int m, n, i, j;//两个矩阵的行数和列数
 	int a, b;//用于循环输入矩阵的整型数
@@ -150,7 +146,7 @@ void min()
 void mul()
 {
 	int m, n, i, j;//两个矩阵的行数和列数
-	int a, b,c;//用于循环输入矩阵的整型数
+	int a, b, c;//用于循环输入矩阵的整型数
 	int num1, num2;
 
 	printf("please enter two numbers for the first matrix's row and column");
