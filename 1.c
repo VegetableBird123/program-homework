@@ -2,42 +2,51 @@
 #include<stdlib.h> 
 #define _CRT_SECURE_NO_WARNINGS
 #pragma warning(disable:4996) 
-int func1(int array[][20], int a, int b, int p, int q);//求代余式的某一项展开值 
+int func1(int array[][20], int a, int b, int p, int q);//求代余式的某一项展开值与对应元素的乘积 
 void add();//矩阵加法
 void sub();//矩阵减法
 void mul();//矩阵乘法
 void inv();//求逆矩阵 
+void tran();
 int main(void)
 {
 	int a;
-	printf("Please chose the numbers to caculate\n");
-	printf("*********************************\n");
-	printf("* 1 *     matrix addition       *\n");
-	printf("* 2 *     matrix subtraction    *\n");
-	printf("* 3 *     inverse matrix        *\n");
-	printf("* 4 *     rank of matrix        *\n");
-	printf("* 5 *     matrix multiplication *\n");
-	printf("*********************************\n");
+	printf("                                               请选择何种计算\n\n\n\n");
+	printf("                                          *********************************\n");
+	printf("                                          * 1 *     矩阵加法              *\n");
+	printf("                                          * 2 *     矩阵减法              *\n");
+	printf("                                          * 3 *     矩阵的逆              *\n");
+	printf("                                          * 4 *     转置矩阵              *\n");
+	printf("                                          * 5 *     矩阵乘法              *\n");
+	printf("                                          *********************************\n");
 	scanf("%d", &a);
+
 	if (a == 1)
 	{
-		printf("WARNING:Please confirm whether the matrices are of the same type\n");
-		printf("Otherwise, the program will be terminated.\n");
+		printf("警告:请确保输入的矩阵未同行矩阵\n\n\n\n");
 		add();
 	}
+
 	else if (a == 2)
 	{
-		printf("WARNING:Please confirm whether the matrices are of the same type\n");
+		printf("警告:请确保输入的矩阵未同行矩阵\n\n\n\n");
 		sub();
 	}
+
 	else if (a == 3)
 	{
-		printf("You need to enter a square matrix");
+		printf("请确认输入矩阵为方阵\n\n\n\n");
 		inv();
 	}
+
+	else if (a == 4)
+	{
+		tran();
+	}
+
 	else if (a == 5)
 	{
-		printf("Please confirm whether the matrix row-column relationship is reasonable\n");
+		printf("请确认矩阵的行列关系满足相乘法则\n\n\n\n");
 		mul();
 	}
 
@@ -46,25 +55,23 @@ void add()
 {
 	int m, n, i, j;//两个矩阵的行数和列数
 	int a, b;//用于循环输入矩阵的整型数
-	int num1, num2;
 
-	printf("please enter two numbers for the first matrix's row and column");
+	printf("请输入第一个矩阵的行和列:\n");
 	scanf("%d", &m);
 	scanf("%d", &n);
-	printf("please enter two numbers for the second matrix's row and column");
+
+	printf("请输入第二个矩阵的行和列:\n");
 	scanf("%d", &i);
 	scanf("%d", &j);
+
 	if (m != i || n != j)
 		exit(1);
 
-	num1 = m;
-	num2 = n;
-
-	int matrix_tem[20][20];
 	int matrix1[20][20];
 	int matrix2[20][20];
 
-	printf("please input the first matrix");
+	printf("请输入第一个矩阵\n");
+
 	for (a = 0; a < m; a++)
 	{
 		if (a == 0)
@@ -73,7 +80,8 @@ void add()
 			scanf("%d", &matrix1[a][b]);
 	}
 
-	printf("please input the second matrix");
+	printf("请输入第二个矩阵\n");
+
 	for (a = 0; a < i; a++)
 	{
 		if (a == 0)
@@ -82,18 +90,14 @@ void add()
 			scanf("%d", &matrix2[a][b]);
 	}
 
-	for (a = 0; a < num1; a++)
-		for (b = 0; b < num2; b++)
-		{
-			matrix_tem[num1][num2] = matrix1[num1][num2] + matrix2[num1][num2];
-		}
-	printf("The result :\n");
-	for (a = 0; a < num1; a++)
+	printf("最终结果是:\n");
+
+	for (a = 0; a < m; a++)
 	{
 		if (a != 0)
 			printf("\n");
-		for (b = 0; b < num2; b++)
-			printf("%4d", matrix_tem[num1][num2]);
+		for (b = 0; b < n; b++)
+			printf("%-8d", matrix1[a][b] + matrix2[a][b]);
 	}
 }
 
@@ -101,25 +105,23 @@ void sub()
 {
 	int m, n, i, j;//两个矩阵的行数和列数
 	int a, b;//用于循环输入矩阵的整型数
-	int num1, num2;
 
-	printf("please enter two numbers for the first matrix's row and column");
+	printf("请输入第一个矩阵的行和列\n");
 	scanf("%d", &m);
 	scanf("%d", &n);
-	printf("please enter two numbers for the second matrix's row and column");
+
+	printf("请输入第二个矩阵的行和列\n");
 	scanf("%d", &i);
 	scanf("%d", &j);
+
 	if (m != i || n != j)
 		exit(1);
 
-	num1 = m;
-	num2 = n;
-
-	int matrix_tem[20][20];
 	int matrix1[20][20];
 	int matrix2[20][20];
 
-	printf("please input the first matrix");
+	printf("请输入第一个矩阵\n");
+
 	for (a = 0; a < m; a++)
 	{
 		if (a == 0)
@@ -128,7 +130,8 @@ void sub()
 			scanf("%d", &matrix1[a][b]);
 	}
 
-	printf("please input the second matrix");
+	printf("请输入第二个矩阵\n");
+
 	for (a = 0; a < i; a++)
 	{
 		if (a == 0)
@@ -137,30 +140,29 @@ void sub()
 			scanf("%d", &matrix2[a][b]);
 	}
 
-	for (a = 0; a < num1; a++)
-		for (b = 0; b < num2; b++)
-		{
-			matrix_tem[num1][num2] = matrix1[num1][num2] - matrix2[num1][num2];
-		}
-	printf("The result :\n");
-	for (a = 0; a < num1; a++)
+	printf("最终结果是\n");
+
+	for (a = 0; a < m; a++)
 	{
 		if (a != 0)
 			printf("\n");
-		for (b = 0; b < num2; b++)
-			printf("%d", matrix_tem[num1][num2]);
+		for (b = 0; b < n; b++)
+			printf("%-8d", matrix1[a][b] - matrix2[a][b]);
 	}
+
 }
+
 void mul()
 {
 	int m, n, i, j;//两个矩阵的行数和列数
 	int a, b, c;//用于循环输入矩阵的整型数
 	int num1, num2;
 
-	printf("please enter two numbers for the first matrix's row and column");
+	printf("请输入第一个矩阵的行和列\n");
 	scanf("%d", &m);
 	scanf("%d", &n);
-	printf("please enter two numbers for the second matrix's row and column");
+
+	printf("请输入第二个矩阵的行和列\n");
 	scanf("%d", &i);
 	scanf("%d", &j);
 
@@ -175,7 +177,8 @@ void mul()
 	int matrix1[20][20];
 	int matrix2[20][20];
 
-	printf("please input the first matrix");
+	printf("请输入第一个矩阵\n");
+
 	for (a = 0; a < m; a++)
 	{
 		if (a == 0)
@@ -184,7 +187,8 @@ void mul()
 			scanf("%d", &matrix1[a][b]);
 	}
 
-	printf("please input the second matrix");
+	printf("请输入第二个矩阵\n");
+
 	for (a = 0; a < i; a++)
 	{
 		if (a == 0)
@@ -205,6 +209,7 @@ void mul()
 	for (c = 0; c < num1; c++)
 	{
 		printf("\n");
+
 		for (b = 0; b < num2; b++)
 			printf("%8d", matrix_tem2[c][b]);
 	}
@@ -260,6 +265,38 @@ void inv()
 		for (number3 = 0; number3 < b; number3++)
 			printf("%12.5lf", (double)matrix3[number2][number3] / c);
 	}//*/	
+}
+
+void tran()
+{
+	int a, b;//表示矩阵的行和列
+	int m, n;//循环输入矩阵
+
+	int matrix[20][20];
+
+	printf("请输入矩阵的行和列\n");
+
+	scanf("%d", &a);
+	scanf("%d", &b);
+
+	printf("请输入矩阵\n");
+
+	for (m = 0; m < a; m++)
+	{
+		for (n = 0; n < b; n++)
+			scanf("%d", &matrix[m][n]);
+	}
+
+	printf("转置矩阵为:\n");
+
+	for (n = 0; n < b; n++)
+	{
+		printf("\n");
+
+		for (m = 0; m < a; m++)
+			printf("%8d", matrix[m][n]);
+	}
+
 }
 
 int func1(int array[][20], int a, int b, int p, int q)
